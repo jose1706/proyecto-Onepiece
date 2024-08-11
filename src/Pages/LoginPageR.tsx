@@ -10,7 +10,7 @@ export const Login: React.FC = () => {
   return (
     <div className="wrapper">
       <form>
-        <h1>Login</h1>
+        <h1>Ingreso</h1>
         <InputBox type="text" placeholder='Nombre de usuario' icon={FaUser} />
         <InputBox type="password" placeholder='Contraseña' icon={FaLock} />
         <RegisterForgot />
