@@ -11,6 +11,7 @@ export interface UserContextValue {
     setUsername: (username: User["username"]) => void;
     setEmail: (email: User["email"]) => void;
     register: (username: string, password: string, email: string) => void;
+    updatePassword: (username: string, newPassword: string) => void;
 }
 
 export const UserContext = createContext<UserContextValue | null>(null);
@@ -30,10 +31,20 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
         registeredUsers.push({ username, password, email });
     };
 
+    const updatePassword = (username: string, newPassword: string) => {
+
+        const user = registeredUsers.find(user => user.username === username);
+        if (user) {
+            user.password = newPassword;
+        }
+
+    }
+
 
     return (
         <UserContext.Provider
             value={{
+                updatePassword,
                 checkRegister,
                 register,
                 isLoggedIn,

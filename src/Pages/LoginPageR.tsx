@@ -25,7 +25,7 @@ export const Login: React.FC = () => {
     if (index === -1) {
       window.alert('Usuario no encontrado. Por favor, regístrate.');
     } else {
-      logIn(registeredUsers[index])
+      logIn(registeredUsers[index]);
       navigate('/Menu');
     }
   };
