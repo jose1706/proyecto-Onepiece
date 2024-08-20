@@ -5,7 +5,7 @@ import { devilFruits } from "../mocks/registeredDevilfruits";
 import { useNavigate } from "react-router-dom";
 
 export const RegisterDevilFruitpage: React.FC = () => {
-    const { registerDevilFruits, AllDevilFruits } = useDevilFruit();
+    const { registerDevilFruits, AllDevilFruits, checkRegisterDevilFruit } = useDevilFruit();
 
     const [fruitName, setfruitName] = useState('');
     const [image, setimage] = useState('');
@@ -14,12 +14,19 @@ export const RegisterDevilFruitpage: React.FC = () => {
     const [userfruit, setuserfruit] = useState('');
     const navigate = useNavigate();
 
+    console.log(devilFruits);
+
     const handleRegister = (e: React.FormEvent) => {
         e.preventDefault();
-        
-        registerDevilFruits(fruitName, image, description, type, userfruit);
-        window.alert('Registro de fruta exitoso');
-        navigate('/CorePage');
+        const valor = checkRegisterDevilFruit(fruitName, type)
+        if (valor === -1) {
+            registerDevilFruits(fruitName, image, description, type, userfruit);
+            window.alert('Registro de fruta exitoso');
+            navigate('/CorePage');
+        }else{
+            window.alert('La fruta ya existe, por favor verificar');
+            handleReset();
+        }
 
     
         console.log('devilfruits:', devilFruits)

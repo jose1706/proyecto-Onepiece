@@ -22,9 +22,13 @@ export const Registerpage: React.FC = () => {
             window.alert('Las contraseñas no coinciden, por favor verificar');
         }
         else{
-            register(username, password, email);
-            window.alert('Registro exitoso');
-            navigate('/');
+            const valor = register(username, password, email);
+            if(valor){
+                window.alert('Registro exitoso');
+                navigate('/');
+            }else{
+                setUsername('');
+            }
         }
         console.log(registeredUsers)
 

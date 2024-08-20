@@ -10,7 +10,7 @@ export interface UserContextValue {
     logIn: (user: User) => void;
     setUsername: (username: User["username"]) => void;
     setEmail: (email: User["email"]) => void;
-    register: (username: string, password: string, email: string) => void;
+    register: (username: string, password: string, email: string) => boolean;
     updatePassword: (username: string, newPassword: string) => void;
 }
 
@@ -28,7 +28,16 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
     };
 
     const register = (username: string, password: string, email: string) => {
-        registeredUsers.push({ username, password, email });
+        const userIn = registeredUsers.findIndex(
+            (user) => user.username === username
+        );
+        if (userIn === -1) {
+            registeredUsers.push({ username, password, email });
+            return true;
+        }else {
+            window.alert('Nombre de usuario ya existente, por favor ingrese uno diferente');
+            return false;
+        }
     };
 
     const updatePassword = (username: string, newPassword: string) => {

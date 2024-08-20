@@ -12,6 +12,7 @@ export interface DevilFruitContextValue {
   searchTerm: string;
   setSearchTerm: (term: string) => void
   setAllDevilFruits: (arreglo: DevilFruits[]) => void;
+  checkRegisterDevilFruit: (name: string, type: string) => Number;
 }
 
 export const DevilFruitContext = createContext<DevilFruitContextValue | null>(null);
@@ -23,6 +24,13 @@ export const DevilFruitProvider: FC<{ children: ReactNode }> = ({ children }) =>
 
   const addDevilFruit = (newFruit: DevilFruits) => {
     setAllDevilFruits([...AllDevilFruits, newFruit]);
+  };
+
+  const checkRegisterDevilFruit = (name: string, type: string) => {
+    const fruitIndex = devilFruits.findIndex(
+        (fruit) => fruit.name.toLocaleLowerCase() === name.toLocaleLowerCase() && fruit.type.toLocaleLowerCase() === type.toLocaleLowerCase()
+    );
+    return fruitIndex;
   };
 
   const registerDevilFruits = (name: string, image: string, description: string, type: string, user: string) => {
@@ -50,7 +58,8 @@ export const DevilFruitProvider: FC<{ children: ReactNode }> = ({ children }) =>
         removeDevilFruit,
         setActive,
         registerDevilFruits, 
-        setAllDevilFruits
+        setAllDevilFruits,
+        checkRegisterDevilFruit
       }}
     >
       {children}
