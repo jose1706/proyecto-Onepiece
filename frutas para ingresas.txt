@@ -1,0 +1,17 @@
+{
+    "id": 9,
+    "name": "Mero Mero no mi",
+    "image": "https://ih1.redbubble.net/image.5006819243.5900/st,small,507x507-pad,600x600,f8f8f8.jpg",
+    "description": "Permite realizar una serie de ataques que implican pensamientos de lujuria o perversión hacia el consumidor para transformar a los oponentes en piedra",
+    "type": "Paramecia",
+    "user": "Boa Hancock"
+},
+
+{
+    "id": 11,
+    "name": "Ito Ito no Mi",
+    "image": "https://ih1.redbubble.net/image.1665161227.2240/st,small,507x507-pad,600x600,f8f8f8.jpg",
+    "description": "Permite a quien la consuma generar y manipular los hilos, transformándolo en un humano hilo.",
+    "type": " Paramecia ",
+    "user": " Donquixote Doflamingo"
+}

@@ -41,13 +41,15 @@ export const Login: React.FC = () => {
       <form onSubmit={handleSubmit} >
         <h1>Ingreso frutipedia</h1>
         <InputBox 
+          className='input-box'
           type="text" 
           placeholder="Nombre de usuario" 
           icon={FaUser} 
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
-        <InputBox 
+        <InputBox
+          className='input-box'
           type="password" 
           placeholder="Contraseña" 
           icon={FaLock} 

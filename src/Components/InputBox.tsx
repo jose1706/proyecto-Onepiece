@@ -7,10 +7,11 @@ interface InputBoxProps {
   icon: React.ComponentType<{ className: string }>;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  className: string;
 }
 
-export const InputBox: React.FC<InputBoxProps> = ({ type, placeholder, icon: Icon, value, onChange }) => (
-  <div className="input-box">
+export const InputBox: React.FC<InputBoxProps> = ({ className, type, placeholder, icon: Icon, value, onChange }) => (
+  <div className={className}>
     <Input type={type} placeholder={placeholder} value={value} onChange={onChange} />
     <Icon className='icon' />
   </div>

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import '../Styles/CorePage.css';
 import { DevilFruitProvider } from "../Context/DevilFruitContext";
 
+
 export const CorePage= () => {
     useEffect(() => {
         document.body.style.background = "inherit";
@@ -28,7 +29,7 @@ export const CorePage= () => {
       }, []);
     return <>
     <DevilFruitProvider>
-        <BrowserBar/>
+        <BrowserBar />
         <Outlet/>
     </DevilFruitProvider>
     </>;

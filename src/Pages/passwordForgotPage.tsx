@@ -43,13 +43,13 @@ export const Forgotpage: React.FC = () => {
         <div className="wrapper">
             <form onReset={handleReset} onSubmit={handleSubmit}>
                 <h1>Olvido de contraseña</h1>
-                <InputBox type="text" placeholder='Nombre de usuario' icon={FaUser} value={username} 
+                <InputBox className='input-box' type="text" placeholder='Nombre de usuario' icon={FaUser} value={username} 
                     onChange={(e) => setUsername(e.target.value)}/>
 
-                <InputBox type="password" placeholder='Contraseña nueva' icon={FaLock} value={password} 
+                <InputBox className='input-box' type="password" placeholder='Contraseña nueva' icon={FaLock} value={password} 
                     onChange={(e) => setPassword(e.target.value)}/>
 
-                <InputBox type="password" placeholder='Contraseña nueva' icon={FaLock} value={password2} 
+                <InputBox className='input-box' type="password" placeholder='Contraseña nueva' icon={FaLock} value={password2} 
                     onChange={(e) => setPassword2(e.target.value)}/>
 
                 <Button type="submit">Cambiar contraseña</Button>

@@ -5,6 +5,7 @@ import { useDevilFruit } from '../Hooks/useDevilFruit';
 import { FilterBar } from '../Components/MenuOpciones';
 
 
+
 export const HomePage: React.FC = () => {
     const { user, isLoggedIn } = useAuth();
     const { active, setActive } = useDevilFruit();

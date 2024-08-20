@@ -42,16 +42,16 @@ export const Registerpage: React.FC = () => {
         <div className="wrapper">
             <form onSubmit={handleRegister} onReset={handleReset}>
                 <h1>Registro usuario nuevo</h1>
-                <InputBox type="text" placeholder='Nombre de usuario' icon={FaUserNinja} value={username} 
+                <InputBox className = "input-box" type="text" placeholder='Nombre de usuario' icon={FaUserNinja} value={username} 
                  onChange={(e) => setUsername(e.target.value)} />
 
-                <InputBox type="email" placeholder='Correo electrónico' icon={FaEnvelope} value={email}
+                <InputBox className = "input-box" type="email" placeholder='Correo electrónico' icon={FaEnvelope} value={email}
                  onChange={(e) => setEmail(e.target.value)}/>
 
-                <InputBox type="password" placeholder='Contraseña' icon={FaLock} value={password} 
+                <InputBox className = "input-box" type="password" placeholder='Contraseña' icon={FaLock} value={password} 
                  onChange={(e) => setPassword(e.target.value)}/>
 
-                <InputBox type="password" placeholder='Confirmar contraseña' icon={FaLock} value={password2} 
+                <InputBox className = "input-box" type="password" placeholder='Confirmar contraseña' icon={FaLock} value={password2} 
                  onChange={(e) => setPassword2(e.target.value)}/>
 
                 <Button type="submit">Registrar</Button>

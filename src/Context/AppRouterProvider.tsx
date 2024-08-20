@@ -9,6 +9,7 @@ import { CorePage } from "../Pages/CorePage.tsx";
 import { HomePage } from "../Pages/HomePage.tsx";
 import { DevilFruitPage } from "../Pages/DevilFruitPage.tsx";
 import { SearchPage } from "../Pages/SearchPage.tsx";
+import { RegisterDevilFruitpage } from "../Pages/RegisterDevilFruitPage.tsx";
 
 const router = createBrowserRouter([
     {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         {
           path: "search", 
           element: <SearchPage />
+        },
+        {
+          path: "RegisterDevilFruitPage", 
+          element: <RegisterDevilFruitpage />
         }
       ]
     },
