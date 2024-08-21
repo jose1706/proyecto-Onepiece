@@ -10,6 +10,7 @@ import { HomePage } from "../Pages/HomePage.tsx";
 import { DevilFruitPage } from "../Pages/DevilFruitPage.tsx";
 import { SearchPage } from "../Pages/SearchPage.tsx";
 import { RegisterDevilFruitpage } from "../Pages/RegisterDevilFruitPage.tsx";
+import { EditDevilFruitPage } from "../Pages/EditDevilFruitPage.tsx";
 
 const router = createBrowserRouter([
     {
@@ -47,7 +48,11 @@ const router = createBrowserRouter([
         {
           path: "RegisterDevilFruitPage", 
           element: <RegisterDevilFruitpage />
-        }
+        },
+        {
+          path: "EditDevilFruitpage/:id", 
+          element: <EditDevilFruitPage /> 
+        },
       ]
     },
 ]);

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { DevilFruits } from '../types';
 import { useDevilFruit } from '../Hooks/useDevilFruit';
 import { devilFruits } from '../mocks/registeredDevilfruits';
-import { FaTrashAlt } from "react-icons/fa";
+import { FaTrashAlt, FaEdit } from "react-icons/fa";
 
 interface CardFruitProps {
   fruit: DevilFruits;
@@ -40,9 +40,16 @@ export const CardFruit: React.FC<CardFruitProps> = ({ fruit }) => {
           </div>
         </div>
       </Link>
-      <button onClick={handleDelete} className='btn-delete'>
-        <FaTrashAlt/>
-      </button>
+      <div className="card-actions">
+        <Link to={`EditDevilFruitpage/${fruit.id}`}>
+          <button className='btn-edit'>
+            <FaEdit />
+          </button>
+        </Link>
+        <button onClick={handleDelete} className='btn-delete'>
+          <FaTrashAlt />
+        </button>
+      </div>
     </div>
   );
 };
