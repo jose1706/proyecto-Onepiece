@@ -38,12 +38,6 @@ export const Login: React.FC = () => {
 
   return (
     <div className="wrapper">
-<<<<<<< HEAD
-      <form>
-        <h1>Ingreso</h1>
-        <InputBox type="text" placeholder='Nombre de usuario' icon={FaUser} />
-        <InputBox type="password" placeholder='Contraseña' icon={FaLock} />
-=======
       <form onSubmit={handleSubmit} >
         <h1>Ingreso frutipedia</h1>
         <InputBox 
@@ -62,7 +56,6 @@ export const Login: React.FC = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
->>>>>>> b32f9d91afd79fad4b0817c8161efe6bd72bede1
         <RegisterForgot />
         <Button type="submit">Iniciar sesión</Button>
       </form>
