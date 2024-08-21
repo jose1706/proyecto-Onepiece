@@ -7,8 +7,8 @@ export interface User {
 export interface DevilFruits {
     id: number,
     name: string,
-    image?: string,
+    image: string,
     description: string,
     type: string,
-    user?: string
+    user: string
 }

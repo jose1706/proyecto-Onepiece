@@ -13,6 +13,7 @@ export interface DevilFruitContextValue {
   setSearchTerm: (term: string) => void
   setAllDevilFruits: (arreglo: DevilFruits[]) => void;
   checkRegisterDevilFruit: (name: string, type: string) => Number;
+  updateDevilFruit: (id: number, updatedFruit: Partial<DevilFruits>) => void;
 }
 
 export const DevilFruitContext = createContext<DevilFruitContextValue | null>(null);
@@ -47,6 +48,19 @@ export const DevilFruitProvider: FC<{ children: ReactNode }> = ({ children }) =>
     }
   };
 
+  const updateDevilFruit = (id: number, updatedFruit: Partial<DevilFruits>) => {
+    devilFruits.forEach(fruit => {
+      if (fruit.id === id) {
+          Object.assign(fruit, updatedFruit); // Sobrescribe solo los atributos especificados
+      }
+     }); // se requiere sobreescribir directamente en devilfruit para conservar los cambios despues de que se cierre sesion.
+    setAllDevilFruits(prevFruits =>
+      prevFruits.map(fruit =>
+        fruit.id === id ? { ...fruit, ...updatedFruit } : fruit
+      )
+    );
+  };
+
   return (
     <DevilFruitContext.Provider
       value={{
@@ -59,7 +73,8 @@ export const DevilFruitProvider: FC<{ children: ReactNode }> = ({ children }) =>
         setActive,
         registerDevilFruits, 
         setAllDevilFruits,
-        checkRegisterDevilFruit
+        checkRegisterDevilFruit,
+        updateDevilFruit
       }}
     >
       {children}

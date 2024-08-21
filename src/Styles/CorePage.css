@@ -710,18 +710,30 @@ Styles of Pokemon Single Page
   font-weight: 700;
 }
 
-/* estilos para el el boton con el icono de basura en la cardfruit */
-.btn-delete {
+
+
+
+  /* estilos para el el boton con el icono de editar y de basura en la cardfruit */
+
+  .card-actions {
+	display: flex;
+	gap: 0.5rem;
+  }
+  
+  .btn-edit, .btn-delete {
 	background: none;
 	border: none;
-	color: #ff4d4d; /* Color del ícono */
-	font-size: 1.5rem; /* Tamaño del ícono */
+	color: #555;
+	font-size: 1.5rem;
 	cursor: pointer;
-	padding: 0.5rem;
 	transition: color 0.3s;
   }
   
+  .btn-edit:hover {
+	color: #007bff;
+  }
+  
   .btn-delete:hover {
-	color: #ff1a1a; /* Color al pasar el mouse */
+	color: #ff4d4d;
   }
   
