@@ -28,9 +28,9 @@ export const EditDevilFruitPage: React.FC = () => {
     e.preventDefault();
     updateDevilFruit(parseInt(id ?? '', 10), {
       name: fruitName,
-      image,
+      image: image,
       description: description,
-      type,
+      type: type,
       user: userfruit
     });
     window.alert('Fruta actualizada exitosamente');
