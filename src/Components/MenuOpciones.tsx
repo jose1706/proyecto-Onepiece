@@ -4,7 +4,7 @@ import { useAuth } from '../Hooks/useAuth';
 import { Link } from 'react-router-dom';
 
 export const FilterBar = () => {
-	const { active } = useDevilFruit();
+	const { active, setActive } = useDevilFruit();
 
     const { logOut } = useAuth();
 
@@ -13,7 +13,7 @@ export const FilterBar = () => {
 
 			<button className='sidebar-button' onClick={() => logOut()}>Cerrar sesion</button>
 			<Link className="sidebar-link" to="RegisterDevilFruitPage"><button className='sidebar-button'>Ingresar fruta nueva</button> </Link>
-			
+			<button className="sidebar-button" onClick={() => setActive(!active)}>Menos opciones</button>
 		</div>
 	);
 };

@@ -8,11 +8,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('..\assets\fondo4Onepiece.jpeg') no-repeat;
+  background: url('..\assets\fondo6onepiece.jpg');
   min-width: 320px;
   min-height: 100vh;
-  background-size: cover;
-  background-position: center;
+  /* background-size: cover;
+  background-position: center; */
 
 }
 .wrapper {
@@ -112,3 +112,82 @@ body {
 .register-link p a:hover {
   text-decoration: underline;
 }
+
+
+/* estilos responsive para el componente browserbar */
+.browser-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f5f5f5;
+  border-bottom: 2px solid #ddd;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.browser-bar__logo-img {
+  height: 60px; /* Tamaño más grande para el logo */
+  width: auto;
+}
+
+.browser-bar__form-group {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+}
+
+.browser-bar__icon-search {
+  position: absolute;
+  left: 10px;
+  width: 24px;
+  height: 24px;
+  color: #333;
+}
+
+.browser-bar__input {
+  padding: 8px 12px 8px 36px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Hacer la barra de búsqueda redondeada */
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.browser-bar__input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .browser-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .browser-bar__logo-img {
+    height: 50px; /* Ajuste del tamaño en pantallas más pequeñas */
+  }
+
+  .browser-bar__form-group {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .browser-bar__input {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .browser-bar__form-group {
+    max-width: 100%;
+  }
+
+  .browser-bar__input {
+    padding: 6px 8px 6px 32px;
+    font-size: 12px;
+  }
+}
+

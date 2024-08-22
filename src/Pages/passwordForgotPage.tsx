@@ -10,7 +10,7 @@ import { registeredUsers } from "../mocks/registeredUsers";
 
 export const Forgotpage: React.FC = () => {
 
-    const { updatePassword } = useAuth();
+    const { updatePassword, checkRegisterPassword } = useAuth();
     const navigate = useNavigate();
     
     
@@ -27,10 +27,14 @@ export const Forgotpage: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        if (password === password2) {
+        const val = checkRegisterPassword(username);
+        console.log(val);
+        if (password === password2 && val > -1) {
             updatePassword(username, password);
             window.alert('Contraseña cambiada con éxito');
             navigate('/');
+        } else if (val === -1) {
+            window.alert('El usuario no se encuentra registrado.');
         }
         else{
             window.alert('Las contraseñas no coinciden, por favor verificar');
@@ -49,7 +53,7 @@ export const Forgotpage: React.FC = () => {
                 <InputBox className='input-box' type="password" placeholder='Contraseña nueva' icon={FaLock} value={password} 
                     onChange={(e) => setPassword(e.target.value)}/>
 
-                <InputBox className='input-box' type="password" placeholder='Contraseña nueva' icon={FaLock} value={password2} 
+                <InputBox className='input-box' type="password" placeholder='Confirmar contraseña' icon={FaLock} value={password2} 
                     onChange={(e) => setPassword2(e.target.value)}/>
 
                 <Button type="submit">Cambiar contraseña</Button>

@@ -12,6 +12,7 @@ export interface UserContextValue {
     setEmail: (email: User["email"]) => void;
     register: (username: string, password: string, email: string) => boolean;
     updatePassword: (username: string, newPassword: string) => void;
+    checkRegisterPassword: (username: string) => number;
 }
 
 export const UserContext = createContext<UserContextValue | null>(null);
@@ -23,6 +24,13 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
     const checkRegister = (username: string, password: string) => {
         const userIndex = registeredUsers.findIndex(
             (user) => user.username === username && user.password === password
+        );
+        return userIndex;
+    };
+
+    const checkRegisterPassword = (username: string) => {
+        const userIndex = registeredUsers.findIndex(
+            (user) => user.username === username
         );
         return userIndex;
     };
@@ -53,6 +61,7 @@ export const UserProvider: FC<{ children: ReactNode }> = ({ children }) => {
     return (
         <UserContext.Provider
             value={{
+                checkRegisterPassword,
                 updatePassword,
                 checkRegister,
                 register,
