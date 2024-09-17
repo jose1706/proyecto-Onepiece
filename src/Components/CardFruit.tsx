@@ -31,7 +31,6 @@ export const CardFruit: React.FC<CardFruitProps> = ({ fruit }) => {
           />
         </div>
         <div className='card-info'>
-          <span className='fruit-id'>ID: {fruit.id}</span>
           <h3>{fruit.name}</h3>
           <div className='card-type'>
             <span className={fruit.type.toLowerCase()}>
@@ -41,7 +40,7 @@ export const CardFruit: React.FC<CardFruitProps> = ({ fruit }) => {
         </div>
       </Link>
       <div className="card-actions">
-        <Link to={`EditDevilFruitpage/${fruit.id}`}>
+        <Link to={`/EditDevilFruitpage/${fruit.id}`}>
           <button className='btn-edit'>
             <FaEdit />
           </button>

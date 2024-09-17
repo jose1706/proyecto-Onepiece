@@ -11,6 +11,7 @@ import { DevilFruitPage } from "../Pages/DevilFruitPage.tsx";
 import { SearchPage } from "../Pages/SearchPage.tsx";
 import { RegisterDevilFruitpage } from "../Pages/RegisterDevilFruitPage.tsx";
 import { EditDevilFruitPage } from "../Pages/EditDevilFruitPage.tsx";
+import { DevilFruitProvider } from "./DevilFruitContext.tsx";
 
 const router = createBrowserRouter([
     {
@@ -45,15 +46,25 @@ const router = createBrowserRouter([
           path: "search", 
           element: <SearchPage />
         },
-        {
-          path: "RegisterDevilFruitPage", 
-          element: <RegisterDevilFruitpage />
-        },
-        {
-          path: "EditDevilFruitpage/:id", 
-          element: <EditDevilFruitPage /> 
-        },
       ]
+    },
+    {
+      path: "/EditDevilFruitpage/:id", 
+      element: 
+      <ProtectedRoute>
+        <DevilFruitProvider>
+          <EditDevilFruitPage />
+        </DevilFruitProvider>
+      </ProtectedRoute>,
+    },
+    {
+      path: "/RegisterDevilFruitPage", 
+      element:
+      <ProtectedRoute>
+        <DevilFruitProvider>
+          <RegisterDevilFruitpage />
+        </DevilFruitProvider>
+      </ProtectedRoute>,
     },
 ]);
 

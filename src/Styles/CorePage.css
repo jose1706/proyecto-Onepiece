@@ -459,6 +459,8 @@ Styles of Pokemon Single Page
 	border-radius: 10px; /* Bordes redondeados */
 	padding: 15px; /* Espacio interno */
 	transition: border-color 0.3s ease; /* Transición para suavizar el cambio de color del borde */
+	max-width: 300px; /* Ancho máximo de la tarjeta */
+	width: 100%;
 }
 .card-fruit:hover {
 	border-color: #007bff; /* Cambiar color del borde al pasar el cursor */
@@ -611,10 +613,10 @@ Styles of Pokemon Single Page
 .container-button-options {
     display: flex;
 	align-items: center;
-	justify-content: flex-end;
+	justify-content: flex-start;
 	gap: 10px;
 
-	padding: 10px 160px;
+	padding: 10px;
 	border-radius: 25px;
 }
 
@@ -771,3 +773,31 @@ Styles of Pokemon Single Page
   }
   
   /* estilos para el componente devilfruit */
+
+  /* Contenedor principal que alinea el formulario y la vista previa de la imagen */
+.edit-fruit-container {
+	display: flex;
+	align-items: center; /* Centra verticalmente los elementos */
+	justify-content: center; /* Centra horizontalmente los elementos */
+	gap: 20px; /* Espacio entre el formulario y la imagen */
+	padding: 20px;
+	min-height: 100vh; /* Asegura que el contenedor ocupe al menos el 100% del alto de la pantalla */
+  }
+  
+  /* Ajustes del formulario para ocupar un ancho máximo */
+  .form-registered-fruit {
+	flex: 1; /* Ocupa todo el espacio disponible */
+	max-width: 500px; /* Limitar el ancho máximo del formulario */
+  }
+  
+  /* Estilos de la vista previa de la imagen */
+  .image-preview {
+	flex: 0 1 300px; /* La imagen ocupará un ancho fijo de 300px */
+  }
+  
+  .image-preview img {
+	max-width: 100%; /* La imagen ocupará el 100% del contenedor */
+	height: auto; /* Mantiene las proporciones */
+	border-radius: 8px; /* Bordes redondeados */
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra alrededor de la imagen */
+  }
