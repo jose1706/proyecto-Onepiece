@@ -5,7 +5,8 @@ import { NavLink } from "react-router-dom";
 
 export const EditDevilFruitPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const { AllDevilFruits, updateDevilFruit } = useDevilFruit();
+  //const { AllDevilFruits, updateDevilFruit } = useDevilFruit();// funciones para usar sin el servidor
+  const { AllDevilFruits, updateDevilFruitBack } = useDevilFruit();// funciones para usar con el servidor
   const navigate = useNavigate();
 
   const [fruitName, setfruitName] = useState('');
@@ -46,7 +47,7 @@ export const EditDevilFruitPage: React.FC = () => {
     };
   }, []);
 
-  const handleUpdate = (e: React.FormEvent) => {
+  /* const handleUpdate = (e: React.FormEvent) => { //para usar con los datos mockeados sin el servidor
     e.preventDefault();
     updateDevilFruit(parseInt(id ?? '', 10), {
       name: fruitName,
@@ -55,6 +56,20 @@ export const EditDevilFruitPage: React.FC = () => {
       type: type,
       user: userfruit
     });
+    window.alert('Fruta actualizada exitosamente');
+    navigate('/CorePage');
+  }; */
+
+  const handleUpdate = async (e: React.FormEvent) => { 
+    e.preventDefault();
+    const updatedDevilFruit = {
+      name: fruitName,
+      image: image,
+      description: description,
+      type: type,
+      user: userfruit
+    };
+    await updateDevilFruitBack(parseInt(id?? '', 10), updatedDevilFruit); // para usar con el servidor
     window.alert('Fruta actualizada exitosamente');
     navigate('/CorePage');
   };

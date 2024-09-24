@@ -6,11 +6,12 @@ import '../Styles/LoginPage.css'
 import { useState } from "react";
 import { useAuth } from '../Hooks/useAuth';
 import { useNavigate } from "react-router-dom";
-import { registeredUsers } from "../mocks/registeredUsers";
+//import { registeredUsers } from "../mocks/registeredUsers";
 
 export const Forgotpage: React.FC = () => {
 
-    const { updatePassword, checkRegisterPassword } = useAuth();
+    //const { updatePassword, checkRegisterPassword } = useAuth(); //logica sin un servidor, con los datos mockeados
+    const { updateUserPassword, getAllUsers } = useAuth();
     const navigate = useNavigate();
     
     
@@ -25,7 +26,7 @@ export const Forgotpage: React.FC = () => {
         setPassword2('');
     }
 
-    const handleSubmit = (e: React.FormEvent) => {
+    /* const handleSubmit = (e: React.FormEvent) => {  //esta funcion es para la logica con datos mockeados, sin el servidor
         e.preventDefault();
         const val = checkRegisterPassword(username);
         console.log(val);
@@ -41,7 +42,25 @@ export const Forgotpage: React.FC = () => {
         }
         console.log(registeredUsers)
         
-    }
+    } */
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        const users = await getAllUsers();
+        const val = users.findIndex(
+            (user) => user.username === username
+        );
+        if (password === password2 && val > -1) {
+            updateUserPassword(password, users[val].id);
+            window.alert('Contraseña cambiada con éxito');
+            navigate('/');
+        } else if (val === -1) {
+            window.alert('El usuario no se encuentra registrado.');
+        }
+        else{
+            window.alert('Las contraseñas no coinciden, por favor verificar');
+        }  
+    };
 
     return (
         <div className="wrapper">

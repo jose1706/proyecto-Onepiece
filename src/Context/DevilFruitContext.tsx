@@ -1,4 +1,4 @@
-import { createContext, FC, ReactNode, useState } from "react";
+import { createContext, FC, ReactNode, useState, useEffect } from "react";
 import { DevilFruits } from "../types.ts";
 import { devilFruits } from "../mocks/registeredDevilfruits.ts";
 
@@ -14,14 +14,95 @@ export interface DevilFruitContextValue {
   setAllDevilFruits: (arreglo: DevilFruits[]) => void;
   checkRegisterDevilFruit: (name: string, type: string) => Number;
   updateDevilFruit: (id: number, updatedFruit: Partial<DevilFruits>) => void;
+  getAllDevilFruits: () => Promise<DevilFruits[]>;
+  deleteDevilFruit: (id: number) => Promise<void>;
+  createDevilFruit: (fruit: DevilFruits) => Promise<void>;
+  updateDevilFruitBack: (id: number, updatedFruit: Partial<DevilFruits>) => Promise<void>;
 }
 
 export const DevilFruitContext = createContext<DevilFruitContextValue | null>(null);
 
 export const DevilFruitProvider: FC<{ children: ReactNode }> = ({ children }) => {
-  const [AllDevilFruits, setAllDevilFruits] = useState<DevilFruits[]>(devilFruits);
+  //const [AllDevilFruits, setAllDevilFruits] = useState<DevilFruits[]>(devilFruits);// para trabajar sin el servidor
+  const [AllDevilFruits, setAllDevilFruits] = useState<DevilFruits[]>([]);
   const [active, setActive] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+
+  const getAllDevilFruits = async (): Promise<DevilFruits[]> => {
+    try {
+      const response = await fetch('http://localhost:1234/devilfruits');
+      const fruits = await response.json(); 
+      return fruits;
+    } catch (error) {
+      console.error('Error fetching users:', error);
+      return [];
+    }
+  };
+
+  const deleteDevilFruit = async (id: number): Promise<void> => {
+    try {
+      const response = await fetch(`http://localhost:1234/devilfruits/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al eliminar el usuario');
+      }
+  
+      console.log(`Usuario ${id} eliminado con éxito.`);
+    } catch (error) {
+      console.error('Error al eliminar el usuario:', error);
+    }
+  };
+
+  const createDevilFruit = async (fruit: DevilFruits): Promise<void> => {
+    try {
+      const response = await fetch('http://localhost:1234/devilfruits', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(fruit), // Los datos del nuevo usuario
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al crear el usuario');
+      }
+  
+      const newFruit = await response.json(); // Respuesta del servidor
+      console.log('fruta creada con éxito:', newFruit);
+    } catch (error) {
+      console.error('Error al crear fruta:', error);
+    }
+  };
+
+  const updateDevilFruitBack = async ( id: number, updatedFruit: Partial<DevilFruits>): Promise<void> => {
+    try {
+      const response = await fetch(`http://localhost:1234/devilfruits/${id}`, {
+        method: 'PATCH', 
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updatedFruit ), 
+      });
+  
+      if (!response.ok) {
+        throw new Error('Error al actualizar fruta');
+      }
+  
+      const updatedDevilFruit = await response.json(); 
+      console.log('Fruta actualizada con éxito:', updatedDevilFruit);
+    } catch (error) {
+      console.error('Error al actualizar la contraseña:', error);
+    }
+  };
+
+  useEffect(() => {
+    getAllDevilFruits().then(fruits => setAllDevilFruits(fruits));
+  }, []);
 
   const addDevilFruit = (newFruit: DevilFruits) => {
     setAllDevilFruits([...AllDevilFruits, newFruit]);
@@ -64,6 +145,10 @@ export const DevilFruitProvider: FC<{ children: ReactNode }> = ({ children }) =>
   return (
     <DevilFruitContext.Provider
       value={{
+        updateDevilFruitBack,
+        createDevilFruit,
+        deleteDevilFruit,
+        getAllDevilFruits,
         searchTerm,
         setSearchTerm,
         AllDevilFruits,

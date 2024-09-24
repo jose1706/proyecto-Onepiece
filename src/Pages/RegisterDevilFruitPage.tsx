@@ -1,21 +1,20 @@
 import React, { useState, useEffect } from "react"
 import '../Styles/LoginPage.css'
 import { useDevilFruit } from "../Hooks/useDevilFruit";
-import { devilFruits } from "../mocks/registeredDevilfruits";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 export const RegisterDevilFruitpage: React.FC = () => {
-    const { registerDevilFruits, AllDevilFruits, checkRegisterDevilFruit } = useDevilFruit();
-
+    //const { registerDevilFruits, AllDevilFruits, checkRegisterDevilFruit } = useDevilFruit(); //funciones para trabajar con los datos mockeados
+    const { getAllDevilFruits, createDevilFruit } = useDevilFruit();
+    
+    
     const [fruitName, setfruitName] = useState('');
     const [image, setimage] = useState('');
     const [description, setdescription] = useState('');
     const [type, setType] = useState('');
     const [userfruit, setuserfruit] = useState('');
     const navigate = useNavigate();
-
-    console.log(devilFruits);
 
     useEffect(() => {
         document.body.style.background = "inherit";
@@ -38,7 +37,7 @@ export const RegisterDevilFruitpage: React.FC = () => {
         };
       }, []);
 
-    const handleRegister = (e: React.FormEvent) => {
+    /* const handleRegister = (e: React.FormEvent) => { //funcion para trabajar con los datos mockeados
         e.preventDefault();
         const valor = checkRegisterDevilFruit(fruitName, type)
         if (valor === -1) {
@@ -48,11 +47,30 @@ export const RegisterDevilFruitpage: React.FC = () => {
         }else{
             window.alert('La fruta ya existe, por favor verificar');
             handleReset();
-        }
+        } */
 
-    
-        console.log('devilfruits:', devilFruits)
-        console.log('AllDevilFruits:', AllDevilFruits)
+        const handleRegister = async (e: React.FormEvent) => { //funcion para trabajar con las peticiones al servidor
+            e.preventDefault();
+            const fruit = {
+                name: fruitName,
+                image: image,
+                description: description,
+                type: type,
+                user: userfruit
+            }
+            const devilFruits = await getAllDevilFruits();
+            const valor = devilFruits.findIndex(
+                (fruit) => fruit.name.toLocaleLowerCase() === fruitName.toLocaleLowerCase() && fruit.type.toLocaleLowerCase() === type.toLocaleLowerCase()
+            );
+            console.log(valor, devilFruits[valor]);
+            if (valor === -1) { 
+                await createDevilFruit(fruit);
+                window.alert('Registro de fruta exitoso');
+                navigate('/CorePage');
+            }else{
+                window.alert('La fruta ya existe, por favor verificar');
+                handleReset();
+            }
 
       };
 

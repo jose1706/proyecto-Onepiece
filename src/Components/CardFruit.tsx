@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { DevilFruits } from '../types';
 import { useDevilFruit } from '../Hooks/useDevilFruit';
-import { devilFruits } from '../mocks/registeredDevilfruits';
+//import { devilFruits } from '../mocks/registeredDevilfruits';
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
 
 interface CardFruitProps {
@@ -10,15 +10,25 @@ interface CardFruitProps {
 }
 
 export const CardFruit: React.FC<CardFruitProps> = ({ fruit }) => {
-  const { removeDevilFruit, AllDevilFruits } = useDevilFruit();
+  //const { removeDevilFruit, AllDevilFruits, deleteDevilFruit } = useDevilFruit(); //para trabajar con los datos mockeados
+  const { deleteDevilFruit, setAllDevilFruits,getAllDevilFruits } = useDevilFruit(); //para trabajar con el servidor
 
-  const handleDelete = (e: React.MouseEvent) => {
+  /* const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation(); // Para evitar que el clic en el botón de eliminación también active el Link
     if (window.confirm('¿Estás seguro de que deseas eliminar esta fruta?')) {
       removeDevilFruit(fruit.id);
     }
     console.log(AllDevilFruits);
     console.log(devilFruits);
+  }; */
+
+  const handleDelete = async (e: React.MouseEvent) => {
+    e.stopPropagation(); // Para evitar que el clic en el botón de eliminación también active el Link
+    if (window.confirm('¿Estás seguro de que deseas eliminar esta fruta?')) {
+      await deleteDevilFruit(fruit.id ?? 10000);
+      const newDevilfruits = await getAllDevilFruits();
+      setAllDevilFruits(newDevilfruits); 
+    }
   };
 
   return (

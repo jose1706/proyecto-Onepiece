@@ -8,7 +8,6 @@ import { ProtectedRoute } from "./ProtectedRoute.tsx";
 import { CorePage } from "../Pages/CorePage.tsx";
 import { HomePage } from "../Pages/HomePage.tsx";
 import { DevilFruitPage } from "../Pages/DevilFruitPage.tsx";
-import { SearchPage } from "../Pages/SearchPage.tsx";
 import { RegisterDevilFruitpage } from "../Pages/RegisterDevilFruitPage.tsx";
 import { EditDevilFruitPage } from "../Pages/EditDevilFruitPage.tsx";
 import { DevilFruitProvider } from "./DevilFruitContext.tsx";
@@ -41,10 +40,6 @@ const router = createBrowserRouter([
         {
           path: "DevilFruit/:id", 
           element: <DevilFruitPage />
-        },
-        {
-          path: "search", 
-          element: <SearchPage />
         },
       ]
     },
