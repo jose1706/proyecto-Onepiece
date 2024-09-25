@@ -178,128 +178,7 @@ header form {
 	color: #fff;
 }
 
-/* Types of Pokemon */
-.water {
-	background-color: var(--color-water);
-}
 
-.grass {
-	background-color: var(--color-grass);
-}
-
-.poison {
-	background-color: var(--color-poison);
-}
-
-.fire {
-	background-color: var(--color-fire);
-}
-
-.bug {
-	background-color: var(--color-bug);
-}
-
-.dragon {
-	background: var(--color-dragon);
-}
-
-.flying {
-	background-color: var(--color-flying);
-}
-
-.ground {
-	background-color: var(--color-ground);
-}
-
-.steel {
-	background-color: var(--color-steel);
-}
-
-.psychic {
-	background-color: var(--color-psychic);
-}
-
-.ice {
-	background-color: var(--color-ice);
-}
-
-.ghost {
-	background-color: var(--color-ghost);
-}
-
-.normal {
-	background-color: var(--color-normal);
-}
-
-.rock {
-	background-color: var(--color-rock);
-}
-
-.electric {
-	background-color: var(--color-electric);
-}
-
-.fighting {
-	background-color: var(--color-fighting);
-}
-
-.fairy {
-	background-color: var(--color-fairy);
-}
-
-.dark {
-	background-color: var(--color-dark);
-}
-
-/* Container Filters */
-/* .container-filters {
-	display: flex;
-	justify-content: center;
-
-	position: fixed;
-	top: 0;
-	left: -300px;
-	width: 250px;
-
-	color: #555;
-	background-color: #f2f2f2;
-	height: 100%;
-	padding-top: 140px;
-	transition: all 0.3s linear;
-}
-
-.container-filters.active {
-	left: 0;
-}
-
-.filter-by-type {
-	display: flex;
-	flex-direction: column;
-
-	gap: 20px;
-}
-
-.filter-by-type span {
-	font-weight: 700;
-	font-size: 22px;
-}
-
-.group-type {
-	display: flex;
-	gap: 10px;
-
-	margin-left: 15px;
-}
-
-.group-type label {
-	cursor: pointer;
-} */
-
-/* 
-======================================= 
-Styles of Pokemon Single Page
-======================================= 
-*/
 
 .main-pokemon {
 	display: flex;
@@ -460,7 +339,7 @@ Styles of Pokemon Single Page
 	padding: 15px; /* Espacio interno */
 	transition: border-color 0.3s ease; /* Transición para suavizar el cambio de color del borde */
 	max-width: 300px; /* Ancho máximo de la tarjeta */
-	width: 100%;
+	/* width: 100%; */
 }
 .card-fruit:hover {
 	border-color: #007bff; /* Cambiar color del borde al pasar el cursor */
@@ -473,8 +352,8 @@ Styles of Pokemon Single Page
 	gap: 20px;
 	padding: 20px;
 	background-color: #f8f8f8;
-	justify-content: center; /* Centrar horizontalmente */
-	align-items: center; /* Centrar verticalmente */
+	/* justify-content: center; /* Centrar horizontalmente */ 
+	/* align-items: center; /* Centrar verticalmente */ 
   }
   
 .fruit-list__no-results {
@@ -801,3 +680,9 @@ Styles of Pokemon Single Page
 	border-radius: 8px; /* Bordes redondeados */
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Sombra alrededor de la imagen */
   }
+
+
+
+
+  
+  
