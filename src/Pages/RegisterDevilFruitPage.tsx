@@ -3,10 +3,12 @@ import '../Styles/LoginPage.css'
 import { useDevilFruit } from "../Hooks/useDevilFruit";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
+import { useAuth } from "../Hooks/useAuth";
 
 export const RegisterDevilFruitpage: React.FC = () => {
     //const { registerDevilFruits, AllDevilFruits, checkRegisterDevilFruit } = useDevilFruit(); //funciones para trabajar con los datos mockeados
     const { getAllDevilFruits, createDevilFruit } = useDevilFruit();
+    const { user } = useAuth();
     
     
     const [fruitName, setfruitName] = useState('');
@@ -56,7 +58,8 @@ export const RegisterDevilFruitpage: React.FC = () => {
                 image: image,
                 description: description,
                 type: type,
-                user: userfruit
+                user: userfruit,
+                author: user?.username
             }
             const devilFruits = await getAllDevilFruits();
             const valor = devilFruits.findIndex(
@@ -99,33 +102,43 @@ export const RegisterDevilFruitpage: React.FC = () => {
                 <form className="form-registered-fruit" onSubmit={handleRegister} onReset={handleReset}>
                     <h1>Registro Fruta nueva</h1>
                     <div>
-                        <input className="input-box-fruitregister" type="text" placeholder='Nombre de fruta' value={fruitName} 
+                        <label>Nombre de Fruta:</label>
+                        <input className="input-box-fruitregister" type="text"  value={fruitName} 
                             onChange={(e) => setfruitName(e.target.value)} required/>
                     </div>
                     <div>
-                        <input className= "input-box-fruitregister" type="url" placeholder='URL de la imagen' value={image}
+                        <label>URL de la imagen:</label>
+                        <input className= "input-box-fruitregister" type="url"  value={image}
                             onChange={(e) => setimage(e.target.value)} required />
                     </div>
 
                     <div>
-                        <input className= "input-box-fruitregister" type="text" placeholder='Descripcion de la fruta' value={description} 
+                        <label>Descripción de la fruta:</label>
+                        <input className= "input-box-fruitregister" type="text"  value={description} 
                             onChange={(e) => setdescription(e.target.value)} required />
                     </div>
 
-                    <div>
-                        <input className= "input-box-fruitregister" type="text" placeholder='tipo de la fruta' value={type} 
+                    <div> 
+                        <label>Tipo de la fruta:</label>
+                        <input className= "input-box-fruitregister" type="text"  value={type} 
                             onChange={(e) => setType(e.target.value)} required />
                     </div>
 
                     <div>
-                        <input className= "input-box-fruitregister" type="text" placeholder='usuario de fruta' value={userfruit} 
+                        <label>Usuario de la fruta:</label>  
+                        <input className= "input-box-fruitregister" type="text"  value={userfruit} 
                             onChange={(e) => setuserfruit(e.target.value)} required/>
+                    </div>
+
+                    <div>
+                        <label>Autor:</label> 
+                        <input className="input-box-fruitregister" type="text" value={user?.username ?? "Desconocido"} disabled /> 
+                        {/* El autor se rellena automáticamente con el usuario logueado */}
                     </div>
 
                     <button className= "registerFruit-btn" type="submit" > Registrar</button>
                     <button className= "registerFruit-btn" type="reset"  style={{marginTop: '1rem'}}> Limpiar campos </button>
                 </form>
-                {/* Vista previa de la imagen al lado del formulario */}
                 {image && (
                 <div className="image-preview">
                     <img src={image} alt="Vista previa de la fruta" />

@@ -34,7 +34,7 @@ export const DevilFruitProvider: FC<{ children: ReactNode }> = ({ children }) =>
       const fruits = await response.json(); 
       return fruits;
     } catch (error) {
-      console.error('Error fetching users:', error);
+      console.error('Error fetching frutas:', error);
       return [];
     }
   };
@@ -49,12 +49,12 @@ export const DevilFruitProvider: FC<{ children: ReactNode }> = ({ children }) =>
       });
   
       if (!response.ok) {
-        throw new Error('Error al eliminar el usuario');
+        throw new Error('Error al eliminar la fruta');
       }
   
-      console.log(`Usuario ${id} eliminado con éxito.`);
+      console.log(`fruta ${id} eliminada con éxito.`);
     } catch (error) {
-      console.error('Error al eliminar el usuario:', error);
+      console.error('Error al eliminar la fruta:', error);
     }
   };
 
@@ -65,14 +65,14 @@ export const DevilFruitProvider: FC<{ children: ReactNode }> = ({ children }) =>
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(fruit), // Los datos del nuevo usuario
+        body: JSON.stringify(fruit), 
       });
   
       if (!response.ok) {
-        throw new Error('Error al crear el usuario');
+        throw new Error('Error al crear la fruta');
       }
   
-      const newFruit = await response.json(); // Respuesta del servidor
+      const newFruit = await response.json(); 
       console.log('fruta creada con éxito:', newFruit);
     } catch (error) {
       console.error('Error al crear fruta:', error);

@@ -8,6 +8,7 @@ export const DevilFruitPage: React.FC = () => {
   const navigate = useNavigate();
   
   const fruit = AllDevilFruits.find(f => f.id === parseInt(id ?? '', 10));
+  console.log(fruit, fruit?.author);
 
   useEffect(() => {
     if (searchTerm) {
@@ -32,6 +33,7 @@ export const DevilFruitPage: React.FC = () => {
         <p>{fruit.description}</p>
         <p><strong>Tipo:</strong> {fruit.type}</p>
         <p><strong>Usuario:</strong> {fruit.user}</p>
+        <p><strong>Autor:</strong> {fruit.author}</p>
       </div>
     </div>
   );

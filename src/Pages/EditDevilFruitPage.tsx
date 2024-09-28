@@ -91,6 +91,7 @@ export const EditDevilFruitPage: React.FC = () => {
         <form className="form-registered-fruit" onSubmit={handleUpdate}>
           <h1>Editar Fruta</h1>
           <div>
+            <label>Nombre de fruta:</label>
             <input
               className="input-box-fruitregister"
               type="text"
@@ -100,6 +101,7 @@ export const EditDevilFruitPage: React.FC = () => {
             />
           </div>
           <div>
+            <label>URL de la imagen:</label>
             <input
               className="input-box-fruitregister"
               type="text"
@@ -109,6 +111,7 @@ export const EditDevilFruitPage: React.FC = () => {
             />
           </div>
           <div>
+            <label>Descripción de la fruta:</label>
             <input
               className="input-box-fruitregister"
               type="text"
@@ -118,6 +121,7 @@ export const EditDevilFruitPage: React.FC = () => {
             />
           </div>
           <div>
+            <label>Tipo de fruta:</label>
             <input
               className="input-box-fruitregister"
               type="text"
@@ -127,6 +131,7 @@ export const EditDevilFruitPage: React.FC = () => {
             />
           </div>
           <div>
+            <label>Usuario de la fruta:</label>
             <input
               className="input-box-fruitregister"
               type="text"

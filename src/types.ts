@@ -12,4 +12,5 @@ export interface DevilFruits {
     description: string,
     type: string,
     user: string
+    author?: string
 }
